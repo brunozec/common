@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brunozec.Common.Validation"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Brunozec.Common.Validators", "Brunozec.Common.Validators\Brunozec.Common.Validators.csproj", "{9813D3D7-FB2A-48A1-8E16-DB4553FDB08F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brunozec.Common.Helpers", "Brunozec.Common.Helpers\Brunozec.Common.Helpers.csproj", "{DC815D65-181D-42C3-A4B6-7654DFFF6ED3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9813D3D7-FB2A-48A1-8E16-DB4553FDB08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9813D3D7-FB2A-48A1-8E16-DB4553FDB08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9813D3D7-FB2A-48A1-8E16-DB4553FDB08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC815D65-181D-42C3-A4B6-7654DFFF6ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC815D65-181D-42C3-A4B6-7654DFFF6ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC815D65-181D-42C3-A4B6-7654DFFF6ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC815D65-181D-42C3-A4B6-7654DFFF6ED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
