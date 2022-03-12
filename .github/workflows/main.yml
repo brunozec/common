@@ -78,4 +78,4 @@ jobs:
           --source https://nuget.pkg.github.com/brunozec/index.json \
           --api-key ${{ secrets.GITHUB_TOKEN }} \
           --skip-duplicate \
-          --no-symbols true
+          --no-symbols
