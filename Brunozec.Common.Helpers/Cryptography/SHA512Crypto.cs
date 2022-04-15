@@ -5,12 +5,10 @@ namespace Brunozec.Common.Helpers.Cryptography;
 
 public class SHA512Crypto
 {
-    public static string GenerateHash(string value)
+    public static string GenerateHash(string salt, string value)
     {
-        const string salt = @"salt";
-
-        if (string.IsNullOrEmpty(value))
-            return null;
+        if (salt == null) throw new ArgumentNullException(nameof(salt));
+        if (value == null) throw new ArgumentNullException(nameof(value));
 
         using var hasher = SHA512.Create();
         var encoding = new UTF8Encoding();
