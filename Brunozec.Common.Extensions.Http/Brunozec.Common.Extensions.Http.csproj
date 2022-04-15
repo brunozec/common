@@ -10,17 +10,29 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
+        <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.2" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.4" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.4" />
+        <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
+        <PackageReference Include="ElmahCore" Version="2.1.1" />
+        <PackageReference Include="ElmahCore.Common" Version="2.1.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.4" />
+
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Brunozec.Common.Auth\Brunozec.Common.Auth.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Cache\Brunozec.Common.Cache.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.ErrorLogging\Brunozec.Common.ErrorLogging.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Helpers\Brunozec.Common.Helpers.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Validators\Brunozec.Common.Validators.csproj" />
+        <ProjectReference Include="..\Brunozec.Common.Auth\Brunozec.Common.Auth.csproj" />
+        <ProjectReference Include="..\Brunozec.Common.Cache\Brunozec.Common.Cache.csproj" />
+        <ProjectReference Include="..\Brunozec.Common.ErrorLogging\Brunozec.Common.ErrorLogging.csproj" />
+        <ProjectReference Include="..\Brunozec.Common.Helpers\Brunozec.Common.Helpers.csproj" />
+        <ProjectReference Include="..\Brunozec.Common.Validators\Brunozec.Common.Validators.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Helpers" />
     </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace Brunozec.Common.Extensions.Http.Helpers;
 
-public class AuthHelper
+public class AuthExensions
 {
     public static Task<string?> GenerateJWToken(IAccountInfo accountInfo)
     {

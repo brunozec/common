@@ -44,7 +44,7 @@ public class AuthMiddleware : IMiddleware
             if (string.IsNullOrEmpty(jwtoken))
                 throw new ArgumentNullException(nameof(jwtoken));
 
-            var accountInfo = await AuthHelper.GetAccountInfoFromJWToken(jwtoken);
+            var accountInfo = await AuthExensions.GetAccountInfoFromJWToken(jwtoken);
 
             if (accountInfo == null)
                 throw new ArgumentNullException(nameof(accountInfo));

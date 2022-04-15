@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Brunozec.Common.Extensions.Http.Helpers;
 
-public static class HttpContextAccessorHelper
+public static class HttpContextAccessorExtensions
 {
     public static IAccountInfo? GetUserAccountInfo(this IHttpContextAccessor httpContextAccessor)
     {
