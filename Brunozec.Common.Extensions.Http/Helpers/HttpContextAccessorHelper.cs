@@ -1,9 +1,11 @@
-﻿using Brunozec.Common.Helpers;
+﻿using Brunozec.Common.Auth;
+using Brunozec.Common.Extensions.Http.Abstraction;
+using Brunozec.Common.Helpers;
 using Brunozec.Common.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Brunozec.Common.Extensions.Http;
+namespace Brunozec.Common.Extensions.Http.Helpers;
 
 public static class HttpContextAccessorHelper
 {
@@ -26,11 +28,11 @@ public static class HttpContextAccessorHelper
         return authorization.Split(" ").LastOrDefault();
     }
 
-    public static string GetUserAuthJwt(this IHttpContextAccessor httpContextAccessor)
+    public static string? GetUserAuthJwt(this IHttpContextAccessor httpContextAccessor)
     {
         var account = httpContextAccessor.GetUserAccountInfo();
 
-        return account.Jwtoken;
+        return account?.Jwtoken;
     }
 
     public static string GetUserIpAddress(this IHttpContextAccessor httpContextAccessor)

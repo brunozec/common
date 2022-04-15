@@ -10,17 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.17.0" />
+      <ProjectReference Include="..\Brunozec.Common.ErrorLogging\Brunozec.Common.ErrorLogging.csproj" />
+      <ProjectReference Include="..\Brunozec.Common.Extensions\Brunozec.Common.Extensions.csproj" />
+      <ProjectReference Include="..\Brunozec.Common.Helpers\Brunozec.Common.Helpers.csproj" />
+      <ProjectReference Include="..\Brunozec.Common.Validators\Brunozec.Common.Validators.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Brunozec.Common.Auth\Brunozec.Common.Auth.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Cache\Brunozec.Common.Cache.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.ErrorLogging\Brunozec.Common.ErrorLogging.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Helpers\Brunozec.Common.Helpers.csproj" />
-      <ProjectReference Include="..\Brunozec.Common.Validators\Brunozec.Common.Validators.csproj" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="StackExchange.Redis" Version="2.5.61" />
     </ItemGroup>
 
 </Project>
