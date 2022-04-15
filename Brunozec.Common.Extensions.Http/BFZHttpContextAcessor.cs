@@ -2,22 +2,22 @@
 
 namespace Brunozec.Common.Extensions.Http;
 
-public class BFZHttpContextAcessor
+public class BFZHttpContextAcessor : IBFZHttpContextAcessor
 {
     private IAccountInfo _accountInfo;
-    
+
     private readonly IHttpContextAccessor _httpContextAccessor;
 
     public BFZHttpContextAcessor(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
     }
-    
+
     public IAccountInfo? GetUserAccountInfo()
     {
         return _httpContextAccessor.HttpContext == null ? _accountInfo : _httpContextAccessor?.GetUserAccountInfo();
     }
-    
+
     public void SetAccountInfo(IAccountInfo accountInfo)
     {
         if (_httpContextAccessor.HttpContext != null)
@@ -25,7 +25,7 @@ public class BFZHttpContextAcessor
 
         _accountInfo = accountInfo;
     }
-    
+
     public string GetUserIpAddress()
     {
         if (_httpContextAccessor?.HttpContext?.Connection?.RemoteIpAddress != null)
