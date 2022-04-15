@@ -31,7 +31,7 @@ public class BFZHttpContextAcessor
         if (_httpContextAccessor?.HttpContext?.Connection?.RemoteIpAddress != null)
             return _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-        throw new Exception("Falha ao carregar informações do usuário logado");
+        throw new Exception("Failed to load user from context");
     }
 
     public string[] GetContextHeader(string key)
