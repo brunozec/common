@@ -5,7 +5,6 @@ namespace Brunozec.Common.Helpers.Cryptography;
 
 public class SHA512Crypto
 {
-
     public static string GenerateHash(string value)
     {
         const string salt = @"salt";

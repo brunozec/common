@@ -1,33 +1,29 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace Brunozec.Common.Specifications.Assertions;
 
-namespace Brunozec.Common.Specifications.Assertions
+public class EqualsAssertion<T> : ISpecification<T>
 {
-    public class EqualsAssertion<T> : ISpecification<T>
+    private readonly T _check;
+
+    public EqualsAssertion(T check)
     {
-        private readonly T _check;
-
-        public EqualsAssertion(T check)
+        if (check == null)
         {
-            if (check == null)
-            {
-                throw new ArgumentNullException(nameof(check));
-            }
-
-            _check = check;
+            throw new ArgumentNullException(nameof(check));
         }
 
-        public virtual Task<bool> IsSatisfiedBy(T value)
-        {
-            return Task.FromResult(value != null && _check.Equals(value));
-        }
+        _check = check;
     }
 
-    public class EqualsAssertion : EqualsAssertion<object>
+    public virtual Task<bool> IsSatisfiedBy(T value)
     {
-        public EqualsAssertion(object check)
-            : base(check)
-        {
-        }
+        return Task.FromResult(value != null && _check.Equals(value));
+    }
+}
+
+public class EqualsAssertion : EqualsAssertion<object>
+{
+    public EqualsAssertion(object check)
+        : base(check)
+    {
     }
 }

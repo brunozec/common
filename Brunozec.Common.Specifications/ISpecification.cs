@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace Brunozec.Common.Specifications;
 
-namespace Brunozec.Common.Specifications
+public interface ISpecification<TEntity>
 {
-    public interface ISpecification<TEntity>
-    {
-        Task<bool> IsSatisfiedBy(TEntity entity);
-    }
+    Task<bool> IsSatisfiedBy(TEntity entity);
 }

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace Brunozec.Common.Specifications;
 
-namespace Brunozec.Common.Specifications
+public class NotSpecification<TEntity> : ISpecification<TEntity>
 {
-    public class NotSpecification<TEntity> : ISpecification<TEntity>
+    public NotSpecification(ISpecification<TEntity> spec)
     {
-        public NotSpecification(ISpecification<TEntity> spec)
-        {
-            Wrapped = spec ?? throw new ArgumentNullException(nameof(spec));
-        }
+        Wrapped = spec ?? throw new ArgumentNullException(nameof(spec));
+    }
 
-        protected ISpecification<TEntity> Wrapped { get; }
+    protected ISpecification<TEntity> Wrapped { get; }
 
-        public async Task<bool> IsSatisfiedBy(TEntity entity)
-        {
-            return !await Wrapped.IsSatisfiedBy(entity);
-        }
+    public async Task<bool> IsSatisfiedBy(TEntity entity)
+    {
+        return !await Wrapped.IsSatisfiedBy(entity);
     }
 }

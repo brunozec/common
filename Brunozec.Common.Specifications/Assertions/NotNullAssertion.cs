@@ -1,16 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿namespace Brunozec.Common.Specifications.Assertions;
 
-namespace Brunozec.Common.Specifications.Assertions
+public class NotNullAssertion<T> : ISpecification<T>
 {
-    public class NotNullAssertion<T> : ISpecification<T>
+    public virtual Task<bool> IsSatisfiedBy(T value)
     {
-        public virtual Task<bool> IsSatisfiedBy(T value)
-        {
-            return Task.FromResult(value != null);
-        }
+        return Task.FromResult(value != null);
     }
+}
 
-    public class NotNullAssertion : NotNullAssertion<object>
-    {
-    }
+public class NotNullAssertion : NotNullAssertion<object>
+{
 }
