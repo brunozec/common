@@ -24,11 +24,10 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddResponseCompressionConfig(
         this IServiceCollection services,
         IConfiguration config,
+        bool enableForHttps,
+        string[] gzipMimeTypes,
         CompressionLevel compressionLvl = CompressionLevel.Optimal)
     {
-        var enableForHttps = config.GetValue<bool>("Compression:EnableForHttps");
-        var gzipMimeTypes = config.GetSection("Compression:MimeTypes").Get<string[]>();
-
         services.Configure<BrotliCompressionProviderOptions>(options => options.Level = compressionLvl);
         services.Configure<GzipCompressionProviderOptions>(options => options.Level = compressionLvl);
 
@@ -43,11 +42,11 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddElmahPROPLANTI<TElmahErrorLog>(
-        this IServiceCollection service, 
+    public static IServiceCollection AddElmah<TElmahErrorLog>(
+        this IServiceCollection service,
         string connectionString,
         string applicationName,
-        string path = "admin/elmah", 
+        string path = "admin/elmah",
         Func<Microsoft.AspNetCore.Http.HttpContext, bool> onPermissionCheck = null) where TElmahErrorLog : ErrorLog
     {
         return service.AddElmah<TElmahErrorLog>(options =>

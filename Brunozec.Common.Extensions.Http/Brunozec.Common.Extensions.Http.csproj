@@ -16,6 +16,7 @@
         <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.4" />
         <PackageReference Include="ElmahCore" Version="2.1.1" />
         <PackageReference Include="ElmahCore.Common" Version="2.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.4" />
