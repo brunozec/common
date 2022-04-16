@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brunozec.Common.ErrorLoggin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brunozec.Common.Auth", "Brunozec.Common.Auth\Brunozec.Common.Auth.csproj", "{126C016A-2E13-487D-A65A-146E011AD61D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brunozec.Common.Repository", "Brunozec.Common.Repository\Brunozec.Common.Repository.csproj", "{910B3500-664B-4350-A540-9736456196E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{126C016A-2E13-487D-A65A-146E011AD61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{126C016A-2E13-487D-A65A-146E011AD61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{126C016A-2E13-487D-A65A-146E011AD61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910B3500-664B-4350-A540-9736456196E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910B3500-664B-4350-A540-9736456196E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910B3500-664B-4350-A540-9736456196E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910B3500-664B-4350-A540-9736456196E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

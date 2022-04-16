@@ -26,6 +26,11 @@ public class ValidationResult
         Errors = new List<string>();
     }
 
+    public ValidationResult(List<string> errors)
+    {
+        Errors = errors;
+    }
+
     /// <summary>
     /// Adds a validation error into the result.
     /// </summary>

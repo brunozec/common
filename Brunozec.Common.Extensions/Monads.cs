@@ -1,4 +1,5 @@
-﻿using Brunozec.Common.Validators;
+﻿using Brunozec.Common.Repository;
+using Brunozec.Common.Validators;
 
 namespace Brunozec.Common.Extensions;
 
@@ -76,5 +77,44 @@ public static class Monads
         }
 
         return functionResult;
+    }
+
+    public static async Task<FunctionResult<T>> Commit<T>(this Task<FunctionResult<T>> funcValidation, IBaseContext uow)
+    {
+        try
+        {
+            var validation = await funcValidation;
+            if (validation.IsValid)
+            {
+                await uow.CommitAsync();
+            }
+
+            return validation;
+        }
+        catch (Exception ex)
+        {
+            return new FunctionResult<T>(ex.Message);
+        }
+    }
+
+    public static async Task<ValidationResult> Commit(this Task<ValidationResult> funcValidation, IBaseContext uow)
+    {
+        try
+        {
+            var validation = await funcValidation;
+            if (validation.IsValid)
+            {
+                await uow.CommitAsync();
+            }
+
+            return validation;
+        }
+        catch (Exception ex)
+        {
+            return new ValidationResult(new List<string>
+            {
+                ex.Message
+            });
+        }
     }
 }

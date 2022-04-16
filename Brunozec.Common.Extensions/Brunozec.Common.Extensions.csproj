@@ -10,6 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Brunozec.Common.Repository\Brunozec.Common.Repository.csproj" />
 	  <ProjectReference Include="..\Brunozec.Common.Validators\Brunozec.Common.Validators.csproj" />
 	</ItemGroup>
 

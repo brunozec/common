@@ -37,17 +37,28 @@ public class AuthMiddleware : IMiddleware
         await next(context);
     }
 
+    private async Task SetUnauthorized(Microsoft.AspNetCore.Http.HttpContext context)
+    {
+        context.Response.Clear();
+        context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+        await context.Response.WriteAsync("Authentication failed. User and/or password are incorrect");
+    }
+    
     private async Task AttachUserToContext(Microsoft.AspNetCore.Http.HttpContext context, string? jwtoken)
     {
         try
         {
             if (string.IsNullOrEmpty(jwtoken))
-                throw new ArgumentNullException(nameof(jwtoken));
+            {
+                await SetUnauthorized(context);
+            }
 
             var accountInfo = await AuthExensions.GetAccountInfoFromJWToken(jwtoken);
 
             if (accountInfo == null)
-                throw new ArgumentNullException(nameof(accountInfo));
+            {
+                await SetUnauthorized(context);
+            }
 
             var jwtIsBlackListed = await _cacheRedis.GetStringAsync<string>($"{CacheConstants.Authorization_JWTBlackList}{accountInfo.Login}:{accountInfo.Jwtoken}");
 
@@ -71,16 +82,12 @@ public class AuthMiddleware : IMiddleware
 
             if (!validation.IsValid)
             {
-                context.Response.Clear();
-                context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
-                await context.Response.WriteAsync("Authentication failed. User and/or password are incorrect");
+                await SetUnauthorized(context);
             }
         }
         catch (Exception ex)
         {
-            context.Response.Clear();
-            context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
-            await context.Response.WriteAsync("Authentication failed. User and/or password are incorrect");
+            await SetUnauthorized(context);
             _errorLogging.Log(ex);
         }
     }
