@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.0.12"></a>
+## 1.0.12 (2022-4-16)
+
 <a name="1.0.11"></a>
 ## 1.0.11 (2022-4-16)
 
