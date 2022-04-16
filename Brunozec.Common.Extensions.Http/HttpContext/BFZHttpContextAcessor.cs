@@ -1,6 +1,6 @@
 ﻿using Brunozec.Common.Auth;
 using Brunozec.Common.Extensions.Http.Abstraction;
-using Brunozec.Common.Extensions.Http.Helpers;
+using Brunozec.Common.Extensions.Http.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 

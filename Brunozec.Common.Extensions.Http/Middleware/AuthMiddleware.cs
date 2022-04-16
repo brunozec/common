@@ -2,7 +2,7 @@
 using Brunozec.Common.Auth;
 using Brunozec.Common.Cache;
 using Brunozec.Common.ErrorLogging;
-using Brunozec.Common.Extensions.Http.Helpers;
+using Brunozec.Common.Extensions.Http.Extensions;
 using Brunozec.Common.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualBasic;

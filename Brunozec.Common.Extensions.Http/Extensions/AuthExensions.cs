@@ -2,13 +2,11 @@
 using System.Security.Claims;
 using System.Text;
 using Brunozec.Common.Auth;
-using Brunozec.Common.Extensions.Http.Abstraction;
 using Brunozec.Common.Helpers;
-using Brunozec.Common.Helpers.Cryptography;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
-namespace Brunozec.Common.Extensions.Http.Helpers;
+namespace Brunozec.Common.Extensions.Http.Extensions;
 
 public class AuthExensions
 {

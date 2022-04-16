@@ -1,11 +1,10 @@
 ﻿using Brunozec.Common.Auth;
-using Brunozec.Common.Extensions.Http.Abstraction;
 using Brunozec.Common.Helpers;
 using Brunozec.Common.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Brunozec.Common.Extensions.Http.Helpers;
+namespace Brunozec.Common.Extensions.Http.Extensions;
 
 public static class HttpContextAccessorExtensions
 {

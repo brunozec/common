@@ -1,5 +1,4 @@
 ﻿using System.IO.Compression;
-using Brunozec.Common.Helpers;
 using ElmahCore;
 using ElmahCore.Mvc;
 using Microsoft.AspNetCore.Builder;
@@ -7,7 +6,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Brunozec.Common.Extensions.Http.Helpers;
+namespace Brunozec.Common.Extensions.Http.Extensions;
 
 public static class ServiceCollectionExtensions
 {
