@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Brunozec.Common.Extensions.Http.Extensions;
 
-public class AuthExensions
+public static class AuthExensions
 {
     public static Task<string?> GenerateJWToken(IAccountInfo accountInfo)
     {
