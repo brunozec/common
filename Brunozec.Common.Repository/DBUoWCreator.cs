@@ -2,9 +2,9 @@
 
 public class DBUoWCreator : IBaseUnitOfWorkFactory
 {
-    private readonly BaseContext _context;
+    private readonly DBContext _context;
 
-    public DBUoWCreator(BaseContext context)
+    public DBUoWCreator(DBContext context)
     {
         _context = context;
     }
