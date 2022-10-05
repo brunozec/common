@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Specifications;
 
-public class AndSpecification<TEntity> : ISpecification<TEntity>
+public sealed class AndSpecification<TEntity> : ISpecification<TEntity>
 {
     public AndSpecification(ISpecification<TEntity> spec1, ISpecification<TEntity> spec2)
     {

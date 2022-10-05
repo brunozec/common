@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Specifications;
 
-public class ExpressionSpecification<TEntity> : ISpecification<TEntity>
+public sealed class ExpressionSpecification<TEntity> : ISpecification<TEntity>
 {
     public ExpressionSpecification(Func<TEntity, bool> expression)
     {

@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Specifications;
 
-public class NotSpecification<TEntity> : ISpecification<TEntity>
+public sealed class NotSpecification<TEntity> : ISpecification<TEntity>
 {
     public NotSpecification(ISpecification<TEntity> spec)
     {

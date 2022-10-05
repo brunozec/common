@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Repository;
 
-public class DBUoWCreator : IBaseUnitOfWorkFactory
+public sealed class DBUoWCreator : IBaseUnitOfWorkFactory
 {
     private readonly DBContext _context;
 

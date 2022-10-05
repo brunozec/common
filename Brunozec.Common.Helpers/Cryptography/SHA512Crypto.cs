@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Brunozec.Common.Helpers.Cryptography;
 
-public class SHA512Crypto
+public sealed class SHA512Crypto
 {
     public static string GenerateHash(string salt, string value)
     {

@@ -8,6 +8,6 @@ public class NotNullAssertion<T> : ISpecification<T>
     }
 }
 
-public class NotNullAssertion : NotNullAssertion<object>
+public sealed class NotNullAssertion : NotNullAssertion<object>
 {
 }

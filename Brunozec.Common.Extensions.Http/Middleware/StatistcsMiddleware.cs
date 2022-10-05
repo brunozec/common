@@ -2,7 +2,7 @@
 
 namespace Brunozec.Common.Extensions.Http.Middleware;
 
-public class StatistcsMiddleware : Microsoft.AspNetCore.Http.IMiddleware
+public sealed class StatistcsMiddleware : Microsoft.AspNetCore.Http.IMiddleware
 {
     public StatistcsMiddleware()
     {

@@ -4,7 +4,7 @@ using Brunozec.Dapper.Dommel;
 
 namespace Brunozec.Common.Repository;
 
-public class DBContext : BaseContext
+public sealed class DBContext : BaseContext
 {
     private readonly IConnectionProvider _connectionProvider;
 

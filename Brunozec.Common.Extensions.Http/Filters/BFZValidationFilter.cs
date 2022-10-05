@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Brunozec.Common.Extensions.Http.Filters;
 
-public class BFZValidationFilter : IAsyncActionFilter
+public sealed class BFZValidationFilter : IAsyncActionFilter
 {
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
@@ -37,13 +37,13 @@ public class BFZValidationFilter : IAsyncActionFilter
         await next();
     }
 
-    public class ErrorModel
+    public sealed class ErrorModel
     {
         public string FieldName { get; set; }
         public string Message { get; set; }
     }
 
-    public class ErrorResponse
+    public sealed class ErrorResponse
     {
         public List<ErrorModel> ErrorModels { get; set; } = new List<ErrorModel>();
         public List<string> Errors { get; set; } = new List<string>();

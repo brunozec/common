@@ -20,7 +20,7 @@ public class EqualsAssertion<T> : ISpecification<T>
     }
 }
 
-public class EqualsAssertion : EqualsAssertion<object>
+public sealed class EqualsAssertion : EqualsAssertion<object>
 {
     public EqualsAssertion(object check)
         : base(check)

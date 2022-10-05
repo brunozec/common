@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Brunozec.Common.Helpers.Cryptography;
 
-public class AesCryptography
+public sealed class AesCryptography
 {
     public AesCryptography(string key, string iv)
     {

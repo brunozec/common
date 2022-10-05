@@ -8,7 +8,7 @@ using StackExchange.Redis;
 
 namespace Brunozec.Common.Cache;
 
-public class CacheRedis : ICacheRedis
+public sealed class CacheRedis : ICacheRedis
 {
     private readonly IErrorLogging _errorLogging;
     private readonly ConnectionMultiplexer _redis;

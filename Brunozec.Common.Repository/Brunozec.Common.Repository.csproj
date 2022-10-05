@@ -10,10 +10,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Brunozec.Dapper.Dommel" Version="1.0.9" />
+      <PackageReference Include="Brunozec.Dapper.Dommel" Version="1.0.10" />
       <PackageReference Include="Dapper" Version="2.0.123" />
-      <PackageReference Include="DotNext" Version="4.4.0" />
-      <PackageReference Include="DotNext.Threading" Version="4.4.0" />
+      <PackageReference Include="DotNext" Version="4.7.2" />
+      <PackageReference Include="DotNext.Threading" Version="4.7.2" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>

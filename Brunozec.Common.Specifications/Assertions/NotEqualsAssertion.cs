@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Specifications.Assertions;
 
-public class NotEqualsAssertion<T> : ISpecification<T>
+public  class NotEqualsAssertion<T> : ISpecification<T>
 {
     private readonly T _check;
 
@@ -20,7 +20,7 @@ public class NotEqualsAssertion<T> : ISpecification<T>
     }
 }
 
-public class NotEqualsAssertion : NotEqualsAssertion<object>
+public sealed class NotEqualsAssertion : NotEqualsAssertion<object>
 {
     public NotEqualsAssertion(object check)
         : base(check)

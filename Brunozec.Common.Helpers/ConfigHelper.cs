@@ -2,7 +2,7 @@
 
 namespace Brunozec.Common.Helpers;
 
-public class ConfigHelper
+public sealed class ConfigHelper
 {
     private static IConfiguration _configuration;
 

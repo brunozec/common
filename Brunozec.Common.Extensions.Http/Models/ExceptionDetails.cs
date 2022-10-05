@@ -2,7 +2,7 @@
 
 namespace Brunozec.Common.Extensions.Http.Models;
 
-public class ExceptionDetails
+public sealed class ExceptionDetails
 {
     public readonly int StatusCode;
     public readonly string Message;

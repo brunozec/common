@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Validators;
 
-public class FunctionResult<TEntity> : ValidationResult
+public sealed class FunctionResult<TEntity> : ValidationResult
 {
     public TEntity Result { get; private set; }
 

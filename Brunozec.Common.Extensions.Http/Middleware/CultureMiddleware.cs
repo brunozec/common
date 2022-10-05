@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Brunozec.Common.Extensions.Http.Middleware;
 
-public class CultureMiddleware : Microsoft.AspNetCore.Http.IMiddleware
+public sealed class CultureMiddleware : Microsoft.AspNetCore.Http.IMiddleware
 {
     private readonly IConfiguration _configuration;
     private readonly IErrorLogging _errorLogging;

@@ -9,7 +9,7 @@ using Microsoft.VisualBasic;
 
 namespace Brunozec.Common.Extensions.Http.Middleware;
 
-public class AuthMiddleware : IMiddleware
+public sealed class AuthMiddleware : IMiddleware
 {
     private readonly IErrorLogging _errorLogging;
     private readonly ICacheRedis _cacheRedis;

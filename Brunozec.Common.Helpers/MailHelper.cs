@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Brunozec.Common.Helpers;
 
-public class MailHelper
+public sealed class MailHelper
 {
     private string _name;
 

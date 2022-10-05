@@ -6,7 +6,7 @@ using Microsoft.Extensions.Primitives;
 
 namespace Brunozec.Common.Extensions.Http.HttpContext;
 
-public class BFZHttpContextAcessor : IBFZHttpContextAcessor
+public sealed class BFZHttpContextAcessor : IBFZHttpContextAcessor
 {
     private IAccountInfo? _accountInfo;
 

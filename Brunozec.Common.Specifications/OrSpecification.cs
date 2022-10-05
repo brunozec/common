@@ -1,6 +1,6 @@
 ﻿namespace Brunozec.Common.Specifications;
 
-public class OrSpecification<TEntity> : ISpecification<TEntity>
+public sealed class OrSpecification<TEntity> : ISpecification<TEntity>
 {
     public OrSpecification(ISpecification<TEntity> spec1, ISpecification<TEntity> spec2)
     {
