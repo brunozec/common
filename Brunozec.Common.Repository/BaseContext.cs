@@ -16,22 +16,22 @@ public abstract class BaseContext : IBaseContext
 
     private readonly int? _commandTimeout = 180;
 
-    private AsyncLazy<IDbConnection> _connectionLazy;
+    private Lazy<IDbConnection> _connectionLazy;
 
     public bool IsTransactionStarted => _isTransactionStarted;
 
-    private Task<IDbConnection> Connection => _connectionLazy.Task;
+    private IDbConnection Connection => _connectionLazy.Value;
 
     private IDbTransaction Transaction { get; set; }
 
-    protected abstract Task<IDbConnection> CreateConnection();
+    protected abstract IDbConnection CreateConnection();
 
     protected BaseContext()
     {
         _isTransactionStarted = false;
-        _connectionLazy = new AsyncLazy<IDbConnection>(async () =>
+        _connectionLazy = new Lazy<IDbConnection>(() =>
         {
-            var conn = await CreateConnection();
+            var conn = CreateConnection();
 
             conn.Open();
 
@@ -41,17 +41,17 @@ public abstract class BaseContext : IBaseContext
 
     protected abstract Task CreateConfiguration();
 
-    public async Task BeginTransactionAsync()
+    public void BeginTransaction()
     {
         if (_isTransactionStarted)
             throw new InvalidOperationException("Transaction already started");
 
-        Transaction = (await Connection).BeginTransaction();
+        Transaction = Connection.BeginTransaction();
 
         _isTransactionStarted = true;
     }
 
-    public Task CommitAsync()
+    public void Commit()
     {
         if (!_isTransactionStarted)
             throw new InvalidOperationException("Transaction not started");
@@ -61,10 +61,9 @@ public abstract class BaseContext : IBaseContext
         Transaction = null;
 
         _isTransactionStarted = false;
-        return Task.CompletedTask;
     }
 
-    public Task RollbackAsync()
+    public void Rollback()
     {
         if (!_isTransactionStarted)
             throw new InvalidOperationException("Transaction not started");
@@ -74,18 +73,17 @@ public abstract class BaseContext : IBaseContext
         Transaction = null;
 
         _isTransactionStarted = false;
-        return Task.CompletedTask;
     }
 
-    public async ValueTask DisposeAsync()
+    public void Dispose()
     {
         if (_isTransactionStarted)
-            await RollbackAsync();
+            Rollback();
 
         if (_connectionLazy.IsValueCreated)
         {
-            (await Connection).Close();
-            (await Connection).Dispose();
+            Connection.Close();
+            Connection.Dispose();
         }
 
         _connectionLazy = null;
@@ -96,7 +94,7 @@ public abstract class BaseContext : IBaseContext
 #if DEBUG
         Debug.Print($">>> {DateTime.UtcNow} BaseContext - Thread {Thread.CurrentThread.ManagedThreadId}: {sql}\n\r{JsonConvert.SerializeObject(param)}");
 #endif
-        return await (await Connection).ExecuteAsync(sql, param, Transaction, _commandTimeout, commandType);
+        return await Connection.ExecuteAsync(sql, param, Transaction, _commandTimeout, commandType);
     }
 
     public async Task<T> ExecuteScalarAsync<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
@@ -104,7 +102,7 @@ public abstract class BaseContext : IBaseContext
 #if DEBUG
         Debug.Print($">>> {DateTime.UtcNow} BaseContext - Thread {Thread.CurrentThread.ManagedThreadId}: {sql}\n\r{JsonConvert.SerializeObject(param)}");
 #endif
-        return await (await Connection).ExecuteScalarAsync<T>(sql, param, Transaction, _commandTimeout, commandType);
+        return await Connection.ExecuteScalarAsync<T>(sql, param, Transaction, _commandTimeout, commandType);
     }
 
     public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, CommandType commandType = CommandType.Text)
@@ -112,7 +110,7 @@ public abstract class BaseContext : IBaseContext
 #if DEBUG
         Debug.Print($">>> {DateTime.UtcNow} BaseContext - Thread {Thread.CurrentThread.ManagedThreadId}: {sql}\n\r{JsonConvert.SerializeObject(param)}");
 #endif
-        return await (await Connection).QueryAsync<T>(sql, param, Transaction, _commandTimeout, commandType);
+        return await Connection.QueryAsync<T>(sql, param, Transaction, _commandTimeout, commandType);
     }
 
     public async Task<IDataReader> ExecuteReaderAsync(string sql, object param = null, CommandType commandType = CommandType.Text)
@@ -120,12 +118,12 @@ public abstract class BaseContext : IBaseContext
 #if DEBUG
         Debug.Print($">>> {DateTime.UtcNow} BaseContext - Thread {Thread.CurrentThread.ManagedThreadId}: {sql}\n\r{JsonConvert.SerializeObject(param)}");
 #endif
-        return await (await Connection).ExecuteReaderAsync(sql, param, Transaction, _commandTimeout, commandType);
+        return await Connection.ExecuteReaderAsync(sql, param, Transaction, _commandTimeout, commandType);
     }
 
     public async Task<long> CountAsync<T>(Expression<Func<T, bool>> predicate) where T : class
     {
-        return await (await Connection).CountAsync<T>(predicate, Transaction);
+        return await Connection.CountAsync<T>(predicate, Transaction);
     }
 
     public async Task<bool> DeleteAsync<T>(T entity) where T : class
@@ -133,22 +131,22 @@ public abstract class BaseContext : IBaseContext
         if (!_isTransactionStarted)
             throw new InvalidOperationException("Transaction not started");
 
-        return await (await Connection).DeleteAsync<T>(entity, Transaction);
+        return await Connection.DeleteAsync<T>(entity, Transaction);
     }
 
     public async Task<T> GetAsync<T>(object id, CancellationToken token = default) where T : class
     {
-        return await (await Connection).GetAsync<T>(id, Transaction, token);
+        return await Connection.GetAsync<T>(id, Transaction, token);
     }
 
     public async Task<IEnumerable<T>> GetListAsync<T>(Expression<Func<T, bool>> predicate, CancellationToken token = default) where T : class
     {
-        return await (await Connection).SelectAsync<T>(predicate, Transaction, cancellationToken: token);
+        return await Connection.SelectAsync<T>(predicate, Transaction, cancellationToken: token);
     }
 
     public async Task<IEnumerable<T>> GetPageAsync<T>(Expression<Func<T, bool>> predicate, int page, int resultsPerPage, CancellationToken token = default) where T : class
     {
-        return await (await Connection).SelectPagedAsync<T>(predicate, page - 1, resultsPerPage, Transaction, token);
+        return await Connection.SelectPagedAsync<T>(predicate, page - 1, resultsPerPage, Transaction, token);
     }
 
     public async Task<KeyValuePair<long, IList<T>>> GetPageWithTotalAsync<T>(Expression<Func<T, bool>> predicate, int page, int resultsPerPage, CancellationToken token = default) where T : class
@@ -165,7 +163,7 @@ public abstract class BaseContext : IBaseContext
         if (!_isTransactionStarted)
             throw new InvalidOperationException("Transaction not started");
 
-        return await (await Connection).InsertAsync<T>(entity, Transaction, token);
+        return await Connection.InsertAsync<T>(entity, Transaction, token);
     }
 
     public async Task<bool> UpdateAsync<T>(T entity, CancellationToken token = default) where T : class
@@ -173,6 +171,6 @@ public abstract class BaseContext : IBaseContext
         if (!_isTransactionStarted)
             throw new InvalidOperationException("Transaction not started");
 
-        return await (await Connection).UpdateAsync<T>(entity, Transaction, token);
+        return await Connection.UpdateAsync<T>(entity, Transaction, token);
     }
 }

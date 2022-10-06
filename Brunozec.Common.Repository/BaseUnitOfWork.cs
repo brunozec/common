@@ -8,6 +8,7 @@ public sealed class BaseUnitOfWork : IBaseUnitOfWork
     public BaseUnitOfWork(IBaseContext context)
     {
         _context = context;
+        _context.BeginTransaction();
     }
 
     public async Task CommitAsync()
@@ -15,17 +16,17 @@ public sealed class BaseUnitOfWork : IBaseUnitOfWork
         if (!_context.IsTransactionStarted)
             throw new InvalidOperationException("Transaction have already been commited or disposed of");
 
-        await _context.CommitAsync();
+        _context.Commit();
     }
 
     public async ValueTask DisposeAsync()
     {
         if (_context.IsTransactionStarted)
-            await _context.RollbackAsync();
+            _context.Rollback();
     }
 
     public async Task BeginTransaction()
     {
-        await _context.BeginTransactionAsync();
+        _context.BeginTransaction();
     }
 }

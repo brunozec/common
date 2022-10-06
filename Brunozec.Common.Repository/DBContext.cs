@@ -13,7 +13,7 @@ public sealed class DBContext : BaseContext
         _connectionProvider = connectionProvider;
     }
 
-    protected override Task<IDbConnection> CreateConnection()
+    protected override IDbConnection CreateConnection()
     {
         return _connectionProvider.CreateConnection();
     }

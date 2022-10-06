@@ -1,10 +1,10 @@
 ﻿namespace Brunozec.Common.Repository;
 
-public interface IBaseContext : IAsyncDisposable
+public interface IBaseContext : IDisposable
 {
     bool IsTransactionStarted { get; }
     
-    Task BeginTransactionAsync();
-    Task CommitAsync();
-    Task RollbackAsync();
+    void BeginTransaction();
+    void Commit();
+    void Rollback();
 }

@@ -86,7 +86,7 @@ public static class Monads
             var validation = await funcValidation;
             if (validation.IsValid)
             {
-                await uow.CommitAsync();
+                uow.Commit();
             }
 
             return validation;
@@ -104,7 +104,7 @@ public static class Monads
             var validation = await funcValidation;
             if (validation.IsValid)
             {
-                await uow.CommitAsync();
+                uow.Commit();
             }
 
             return validation;

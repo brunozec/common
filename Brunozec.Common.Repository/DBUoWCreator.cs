@@ -9,10 +9,8 @@ public sealed class DBUoWCreator : IBaseUnitOfWorkFactory
         _context = context;
     }
 
-    public async Task<IBaseUnitOfWork> Create()
+    public IBaseUnitOfWork Create()
     {
-        var uow = new BaseUnitOfWork(_context);
-        await uow.BeginTransaction();
-        return uow;
+        return new BaseUnitOfWork(_context);
     }
 }
